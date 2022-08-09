@@ -35,7 +35,7 @@ let server = http.createServer( (req, res)=>{
 
     /***
      * Promise method for streaming song
-     * @access method
+     * 
      */
     try{
         let fileHandle = fs.promises.access('audio.mp3',fs.constants.W_OK);
@@ -50,7 +50,7 @@ let server = http.createServer( (req, res)=>{
         console.log(err);
     }
 
-    // res.end("this ei end")
+// res.end("this ei end")   
 
 }).listen(port, ()=>{
     console.log(`Server is runing on${port}`);
