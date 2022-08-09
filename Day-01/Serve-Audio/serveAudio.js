@@ -1,3 +1,10 @@
+/**
+ * stream audio file by checking file existentce first then run that file through pipe
+ */
+
+
+
+
 let http = require('http');
 // import { http } from 'http';
 let port = 5000;
@@ -18,7 +25,6 @@ let server = http.createServer( (req, res)=>{
     //     }
     // 
 
-    res.write("heleo there")
    
 /** Promise method for checking existence of file and then read stream  */
     // try{
@@ -33,10 +39,7 @@ let server = http.createServer( (req, res)=>{
 
 
 
-    /***
-     * Promise method for streaming song
-     * 
-     */
+    /** "access" to check file existence Promise method for streaming song  */
     try{
         let fileHandle = fs.promises.access('audio.mp3',fs.constants.W_OK);
         console.log(fileHandle,"file");
