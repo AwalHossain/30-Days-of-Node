@@ -1,5 +1,5 @@
 /**
- * NodeJs day-01 content
+ * Show html file in web-browser by useing callback and promise method
  */
 
 /** Dependencies */
@@ -13,7 +13,7 @@ var server = http.createServer((req, res) => {
     res.writeHead(200, {"Content-Type": "text/plain"});
     res.write("Hello World!");
 
-    /** Promise m */
+    /** Promise method */
     fs.promises.readFile('index.html')
     .then(resl=> res.end(resl))
     .catch((err)=> console.log(err))
