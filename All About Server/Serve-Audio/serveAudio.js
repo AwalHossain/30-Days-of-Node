@@ -6,10 +6,10 @@
 
 
 let http = require('http');
-// import { http } from 'http';
+
 let port = 5000;
 const fs = require('fs')
-// import { access } from 'fs/promises';
+
 
 
 let server = http.createServer( (req, res)=>{
@@ -47,10 +47,12 @@ let server = http.createServer( (req, res)=>{
 
             let rstream = fs.createReadStream('audio.mp3');
                 rstream.pipe(res);
+        }else{
+            console.log("erro");
         }
 
     }catch(err){
-        console.log(err);
+        console.log("got the errro");
     }
 
 // res.end("this ei end")   

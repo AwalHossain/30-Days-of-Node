@@ -10,31 +10,40 @@
  
  
  
- const server = http.createServer(  (req, res)=>{
+ const server = http.createServer( (req, res)=>{
     /** Change the mime type     'video/mp4' */
      res.writeHead(200,{"Content-Type":"video/mp4"});
  
      /** read file method with readFile promise method */
-     // fs.promises.readFile('text.pdf')
-     // .then(resl => res.end(resl))
-     // .catch(err => console.log(err))
+     try{
+
+         let fileHandle = fs.promises.access('video.mp4', fs.constants.W_OK);
+         console.log(fileHandle,"file");
+        if(fileHandle){
+
+            let rstream = fs.createReadStream('video.mp4');
+                     rstream.pipe(res);
+        }
+     }catch(err){
+        console.log(err);
+     }
      
-     /** read file with try&catch method */
- 	// change the MIME type to 'video/mp4'
-     res.writeHead(200, {'Content-Type': 'video/mp4'});
-     fs.exists('video.mp4',function(exists){
-        console.log(exists);
-         if(exists)
-         {
-             var rstream = fs.createReadStream('video.mp4');
-             rstream.pipe(res);
-         }
-         else
-         {
-            //  res.send("Its a 404");
-             res.end("Its a 404");
-         }
-     });
+     /** video streaming is running on callback function */
+ 	
+
+    //  fs.exists('video.mp4',function(exists){
+    //     console.log(exists);
+    //      if(exists)
+    //      {
+    //          var rstream = fs.createReadStream('video.mp4');
+    //          rstream.pipe(res);
+    //      }
+    //      else
+    //      {
+    //         //  res.send("Its a 404");
+    //          res.end("Its a 404");
+    //      }
+    //  });
  });
  
  
