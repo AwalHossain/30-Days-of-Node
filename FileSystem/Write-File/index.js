@@ -13,7 +13,7 @@ var server = http.createServer((req, res) => {
     res.writeHead(200, {"Content-Type": "text/plain"});
 
     /** Promise m */
-    fs.promises.writeFile('file.txt', "this is the data file i am writing let's see w","odo")
+    fs.promises.writeFile('file.txt', "this is the data file i am writing let's see w")
     .then(resl=> res.end("File has been created with data"))
     .catch((err)=> console.log(err))
 
