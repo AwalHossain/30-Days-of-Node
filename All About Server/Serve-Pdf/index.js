@@ -10,14 +10,26 @@ const fs = require('fs');
 
 
 
-const server = http.createServer((req, res)=>{
+const server = http.createServer( async (req, res)=>{
     res.writeHead(200,{"Content-Type":"application/pdf"});
 
-    fs.promises.readFile('text.pdf')
-    .then(resl => res.end(resl))
-    .catch(err => console.log(err))
+    /** read file method with readFile promise method */
+    // fs.promises.readFile('text.pdf')
+    // .then(resl => res.end(resl))
+    // .catch(err => console.log(err))
     
-    // res.end(JSON.stringify(jsonFile))
+    /** read file with try&catch method */
+
+    try{
+       const rea = await fs.promises.readFile('text.pdf')
+       
+       console.log(rea);
+       res.end(rea)
+    }catch(err){
+        console.log(err);
+    }
+
+    res.end();
 });
 
 
