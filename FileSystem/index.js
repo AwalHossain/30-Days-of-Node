@@ -5,15 +5,20 @@
 /** Dependencies */
 
 const http = require('http');
-const port = 3000
+const port = 5000
 const fs = require('fs');
-const rename = require('./Rename-file/index');
+const deleteFile = require('./Delete-File/index');
 // const rename = 
 var server = http.createServer((req, res) => {
-    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.writeHead(200, {"Content-Type": "text/json"});
 
-    rename(req, res);
-    
+  
+    let newM =  fs.promises.unlink('c.txt')
+    if(newM){
+      res.write(JSON.stringify("success"))
+    }
+
+
   });
 
 

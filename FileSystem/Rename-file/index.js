@@ -19,7 +19,8 @@ var server = http.createServer((req, res) => {
             throw err
         }
 
-        res.end("fiel has been changes")
+        // res.s("fiel has been changes")
+        res.statusCode(200).end();
     })
     
   });
