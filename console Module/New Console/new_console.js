@@ -11,9 +11,19 @@ const roll = 838934;
 print.log('roll: %d %d', roll);
 print.log("this will be stored in a file")
 
+
+let value = 10;
+console.log("Value : %d", value);
+
+
 const server = http.createServer((res, req)=>{
     
+    
     res.writeHead(200, {"Content-Type":"text/plain"})
+
+    /** Console clear */
+
+res.end();
 
 });
 
