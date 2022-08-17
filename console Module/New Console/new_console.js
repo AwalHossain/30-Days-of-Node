@@ -54,7 +54,7 @@ res.end();
 
 });
 
-console.warn("This is warnign log")
+console.warn("Warning: This is warnign log")
 
 console.timeEnd('division')
 
