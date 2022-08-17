@@ -54,6 +54,8 @@ res.end();
 
 });
 
+console.warn("This is warnign log")
+
 console.timeEnd('division')
 
 server.listen(3000,()=>{
