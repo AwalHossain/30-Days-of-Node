@@ -20,6 +20,14 @@ console.clear();
 value = value*10;
 console.log(value);
 
+/** Count the same console.log */
+console.count('default');
+console.count('remo');
+console.count('rj');
+console.count('remo');
+console.count('remo');
+console.count('rj');
+// console.count();	
 
 const server = http.createServer((res, req)=>{
     
