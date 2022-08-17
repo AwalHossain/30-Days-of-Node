@@ -15,6 +15,11 @@ print.log("this will be stored in a file")
 let value = 10;
 console.log("Value : %d", value);
 
+console.clear();
+
+value = value*10;
+console.log(value);
+
 
 const server = http.createServer((res, req)=>{
     
