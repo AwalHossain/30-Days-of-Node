@@ -30,6 +30,17 @@ console.count('remo');
 console.count('rj');
 // console.count();	
 
+
+/** console.error() */
+let x = 2;
+let y = 5
+
+if(x/y === 2){
+
+}else{
+    console.error("Error: Error in Position Operands")
+}
+
 const server = http.createServer((res, req)=>{
     
     
