@@ -1,3 +1,5 @@
+console.time('division')
+
 const http = require('http');
 const fs = require('fs');
 
@@ -52,7 +54,7 @@ res.end();
 
 });
 
-
+console.timeEnd('division')
 
 server.listen(3000,()=>{
     console.log("Server is running on 3000");
