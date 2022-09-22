@@ -17,10 +17,11 @@ var server = http.createServer((req, res) => {
     fs.rename('file.txt','updated.txt',(err)=>{
         if(err){
             throw err
+        }else{
+          res.statusCode(200).end("success");
         }
 
         // res.s("fiel has been changes")
-        res.statusCode(200).end();
     })
     
   });
