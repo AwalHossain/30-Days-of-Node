@@ -16,7 +16,6 @@ var https_options = {
 };
 
 /** Using helmet to prevent possible attack */
-app.use(helmet());
 
 
 const config = {
@@ -24,11 +23,26 @@ const config = {
   CLIENT_SECRET: process.env.CLIENT_SECRET,
 }
 
-passport.use(Strategy, ({
-    // clientID:
-}))
+const AUTH_OPTIONS = {
+  callbackURL :'/auth/google/callback',
+  clientID: config.CLIENT_ID,
+  clientSecret: config.CLIENT_SECRET,
+}
 
 
+function verifyCallBack(accessToken, refreshToken, profile, done){
+  console.log("Google Profile", profile);
+  done(null, profile)
+}
+
+passport.use(new Strategy(
+   AUTH_OPTIONS, verifyCallBack
+))
+
+
+
+app.use(helmet());
+app.use(passport.initialize())
 
 
 
@@ -47,9 +61,19 @@ app.get('/secret', (req, res) => {
   }
 
 
-  app.get('/auth/google', (req, res) => {});
+  app.get('/auth/google', (req, res) => {
+    passport.authenticate('google',{
+      scope:['email','profile']
+    })
+  });
 
-app.get('/auth/google/callback', (req, res) => {});
+app.get('/auth/google/callback', (req, res) => passport.authenticate('google',{
+  failureRedirect:"/failure",
+  successRedirect:"/",
+  session: false
+}), (req, res)=>{
+  console.log("Google Called use back");
+});
 
 app.get('/auth/logout', (req, res) => {});
 
