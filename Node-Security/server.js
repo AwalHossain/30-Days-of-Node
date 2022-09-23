@@ -6,6 +6,9 @@ const PORT = 3000;
 const HOST = "localhost"
 const path = require("path")
 const helmet = require('helmet');
+const passport = require('passport');
+const { Strategy } = require('passport-google-oauth20');
+
 
 var https_options = {
   key: fs.readFileSync('key.pem', 'utf8'),
@@ -14,6 +17,14 @@ var https_options = {
 
 /** Using helmet to prevent possible attack */
 app.use(helmet());
+
+
+
+app.get('/auth/google', (req, res) => {});
+
+app.get('/auth/google/callback', (req, res) => {});
+
+app.get('/auth/logout', (req, res) => {});
 
 app.get('/secret', (req, res) => {
     return res.send('Your personal secret value is 42!');
