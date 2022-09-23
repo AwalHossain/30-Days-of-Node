@@ -8,7 +8,7 @@ const path = require("path")
 const helmet = require('helmet');
 const passport = require('passport');
 const { Strategy } = require('passport-google-oauth20');
-
+require('dotenv').config();
 
 var https_options = {
   key: fs.readFileSync('key.pem', 'utf8'),
@@ -20,8 +20,8 @@ app.use(helmet());
 
 
 const config = {
-  CLIENT_ID:
-  CLIENT_SECRET
+  CLIENT_ID: process.env.CLIENT_ID,
+  CLIENT_SECRET: process.env.CLIENT_SECRET,
 }
 
 passport.use(Strategy, ({
