@@ -19,16 +19,40 @@ var https_options = {
 app.use(helmet());
 
 
+const config = {
+  CLIENT_ID:
+  CLIENT_SECRET
+}
 
-app.get('/auth/google', (req, res) => {});
+passport.use(Strategy, ({
+    // clientID:
+}))
+
+
+
+
+
+app.get('/secret', (req, res) => {
+    return res.send('Your personal secret value is 42!');
+  });
+
+  function checkLoggedIn(req, res, next) {
+    const isLoggedIn = true; //TODO
+    if (!isLoggedIn) {
+      return res.status(401).json({
+        error: 'You must log in!',
+      });
+    }
+    next();
+  }
+
+
+  app.get('/auth/google', (req, res) => {});
 
 app.get('/auth/google/callback', (req, res) => {});
 
 app.get('/auth/logout', (req, res) => {});
 
-app.get('/secret', (req, res) => {
-    return res.send('Your personal secret value is 42!');
-  });
 
 app.get("/", (req, res)=>{
     res.sendFile(path.join(__dirname,"public", "index.html"))
