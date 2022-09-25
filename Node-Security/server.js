@@ -59,11 +59,7 @@ app.use(cookieSession({
   maxAge: 24*60*60*1000,
   keys:[config.COOKIE_KEY_1, config.COOKIE_KEY_2]
 }))
-// app.use(cookieSession({
-//   name: 'session',
-//   maxAge: 24 * 60 * 60 * 1000,
-//   keys: [ config.COOKIE_KEY_1, config.COOKIE_KEY_2 ],
-// }));
+
 app.use(passport.initialize());
 app.use(passport.session())
 
@@ -95,8 +91,10 @@ app.get('/auth/google/callBack',
 );
 
 app.get('/auth/logout', (req, res) => {
+
   req.logout(); //Removes req.user and clears any logged in session
   return res.redirect('/');
+  
 });
 
 app.get('/secret', checkLoggedIn, (req, res) => {
@@ -111,7 +109,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-var server = https.createServer(https_options, app).listen(PORT, () => {
+ https.createServer(https_options, app).listen(PORT, () => {
 
   console.log('HTTPS Server listening on %s:%s', HOST, PORT)
 });
