@@ -1,6 +1,15 @@
+import { createFFmpeg } from '@ffmpeg/ffmpeg';
 import cors from 'cors';
 import express from 'express';
 import multer from 'multer';
+
+
+const ffmpegInstance = createFFmpeg({log: true});
+let ffmpegLoadingPromise = ffmpegInstance.load();
+
+async function getFfmpeg(){
+    
+}
 
 const app = express();
 const port = 3000;
@@ -16,6 +25,10 @@ app.use(cors());
 
 app.post('/thumbnail', upload.single('video'), async(req,res)=>{
     const videoData = req.file.buffer;
+
+
+
+
     res.sendStatus(200);
 })
 
