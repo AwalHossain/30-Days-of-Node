@@ -7,7 +7,7 @@ const port = 5000;
 
 const schema = buildSchema(`
     type Query{
-        prooducts: [Product]
+        products: [Product]
         orders: [Order]
     }
 
@@ -42,7 +42,7 @@ const root = {
         {
             id: 'redshoe',
             description: "Red Shoe",
-            price: 42.12
+            price: 42.12,
         },
         {
             id: 'bluejeans',
@@ -59,9 +59,16 @@ const root = {
                     product: {
                         id: 'redhsoe',
                         description: "Red Shoe",
-                        price: 42.12
+                        price: 42.12,
+                        reviews:[
+                            {
+                                rating:4,
+                                comment: "Don't buy it"
+                            }
+                        ]
                     },
                     quantity: 2,
+                    
                 }
             ]
         }
