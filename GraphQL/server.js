@@ -7,8 +7,31 @@ const port = 5000;
 
 const schema = buildSchema(`
     type Query{
-        description: String,
-        price: Float
+        prooducts: [Product]
+        order: [Order]
+    }
+
+    type Product {
+        id: ID!
+        description: String!
+        price: Float!
+        reviews: [Review]
+    }
+
+    type Review {
+        rating: Int!
+        comment: String
+    }
+
+    type Order {
+        date: String!
+        subtotal: Float!
+        items: [OrderItem]
+    }
+
+    type OrderItem {
+        product: Product!
+        quantity: Int!
     }
 `)
 
